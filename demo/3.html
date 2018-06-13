@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3</title>
+    <script src="/node_modules/vue/dist/vue.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click= 'show = !show' >{{show}}</button>
+        <div v-if='show'  >
+            show = true
+        </div>
+        <div v-else >
+            show = false
+        </div>
+        <div v-show = "show" >
+            v-show = true
+        </div>
+
+         <!-- 不生成dom节点 -->
+         <template ng-if="show" >
+            <p>我们</p>
+            <p>是一起的</p>
+        </template>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            show: true
+        },
+        // 计算属性
+        computed: {
+
+        },
+        // 计算属性
+        watch: {
+
+        },
+        methods: {
+
+        }
+
+    })
+</script>
+
+</html>

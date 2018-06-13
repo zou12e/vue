@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1</title>
+    <script src="/node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p v-once> {{title}} </p>
+        <p> hello {{ title }} </p>
+        <input @input="changeText" type="text">
+        <p>
+            <!-- bind -->
+            <a :href="url" target="_block">百度</a>
+        </p>
+        <p v-html="link"></p>
+        <p>{{ say() }}</p>
+        <p>{{ sayComputed }}</p>
+        <p>
+            {{ num }}
+            <button @click="num++">Add</button>
+            <button @click="num--">Subtract</button>
+        </p>
+        <p>
+            {{ num2 }}
+            <button @click="add(2, $event)">Add2</button>
+        </p>
+        <p>
+            <!-- 修饰符 -->
+            <input @keyup.enter="alert" type="text" placeholder="输入按确定">
+        </p>
+        <p>
+            {{ name }}
+            <input v-model="name" type="text">
+        </p>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'jeff',
+            url: 'https://www.baidu.com',
+            link: '<a href="https://www.baidu.com" target="_block" >百度</a>',
+            num: 0,
+            num2: 0,
+            name: 'hello'
+        },
+        // 计算属性
+        computed: {
+            // 同步代码
+            sayComputed() {
+                console.log('num变化才执行');
+                return this.num > 0 ? '> 0' : '<= 0';
+            }
+        },
+        // 计算属性
+        watch: {
+            // 异步代码 num2优化变的时候num变成1
+            num2() {
+                setTimeout(()=>{
+                    this.num = 1;
+                }, 2000)
+            }
+        },
+        methods: {
+            changeText(ev) {
+                this.title = ev.target.value;
+            },
+            say() {
+                console.log('每次变化，我都会执行');
+                return 'x'
+            },
+            add(n, ev) {
+                this.num2 += n;
+            },
+            alert(ev) {
+                alert(ev.target.value);
+            }
+        }
+
+    })
+</script>
+
+</html>

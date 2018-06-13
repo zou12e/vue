@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4</title>
+    <script src="/node_modules/vue/dist/vue.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <div>
+            <ul>
+                <li v-for="num in 10">
+                    {{num}}
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <ul>
+                <li v-for = "(item, i) in list" >
+                    {{item.name}}:{{item.age}}({{i}})
+                </li>
+            </ul>
+        </div>
+
+        <div>
+
+            <div v-for = "(item, i) in nums" :key="item" >
+                {{item}} <input type="text">
+            </div>
+
+            <button @click="change">
+                change
+            </button>
+        </div>
+        
+        <input type="text" ref="name" >
+        <button @click="getName" >getName</button>
+
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            list: [
+                { name: `jeff`, age: 10 },
+                { name: `cathy`, age: 12 }
+            ],
+            nums :[1,2,3]
+        },
+        // 计算属性
+        computed: {
+
+        },
+        // 计算属性
+        watch: {
+
+        },
+        methods: {
+            change() {
+                this.nums.reverse();
+            },
+            getName() {
+                console.log(this);
+                console.log(this.$refs.name.value);
+            }
+        }
+
+    })
+</script>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2</title>
+    <script src="/node_modules/vue/dist/vue.js"></script>
+    <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            background: #ddd;
+        }
+
+        .red {
+            background: red;
+        }
+
+        .green {
+            background: green;
+        }
+
+        .yellow {
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <div class="demo" @click="attach = !attach" :class="{ 'red' : attach, 'yellow' : !attach  }"></div>
+        <div class="demo" :class="divClass"></div>
+        <div class="demo" :class="color">
+        </div>
+        <input v-model="color" type="text">
+        <div>
+            
+            <div class="demo"
+                :style = "{backgroundColor: color}"
+            ></div>
+            <div class="demo"
+                :style = "styleName"
+            ></div>
+            <div class="demo"></div>
+            <input v-model="styleColor" type="text">
+            <input v-model="height" type="text">
+        </div>
+        
+       
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            attach: false,
+            color: 'green',
+            styleColor: 'blue',
+            height: 100
+        },
+        // 计算属性
+        computed: {
+            divClass() {
+                return this.attach ? 'green' : 'red'
+            },
+            styleName() {
+                return {
+                    backgroundColor: this.styleColor,
+                    height: this.height + 'px'
+                }
+            }
+        },
+        // 计算属性
+        watch: {
+
+        },
+        methods: {
+
+        }
+
+    })
+</script>
+
+</html>
