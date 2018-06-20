@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>5</title>
+    <script src="/node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app" >
+        
+        
+    </div>
+
+    <div  id="app2"  >
+        <hello></hello>
+        <hello></hello>
+        <hello></hello>
+    </div>
+
+</body>
+    <script>
+        
+       
+
+        const vue = new Vue({
+            template : `<h1>Hello Word</h1>`
+        })
+
+        // vue.$mount("#app");
+        vue.$mount();
+        document.getElementById('app').appendChild(vue.$el);
+    
+        Vue.component('hello' , {
+                template: '<p>template</p>'
+            }
+        );
+
+        new Vue({
+            el: '#app2'
+        })
+        
+    </script>
+</html>
